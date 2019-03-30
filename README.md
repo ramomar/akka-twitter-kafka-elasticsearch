@@ -1,9 +1,8 @@
 # akka-twitter-kafka-elasticsearch
 
 This is an example app that integrates Twitter, Kafka, and Elasticsearch using Akka Streams.
-The project consists of a producer and a consumer.
 
-*Since my objective with this app is to become familiar with the API's I decided to place the producer and the consumer on the same app.*
+*Since my objective with this app is to become familiar with the API's, I decided to not use any of the Alpakka plugins and place the producer and the consumer on the same app.*
 
 ## Features
 

@@ -17,12 +17,14 @@ import play.api.libs.oauth.{ConsumerKey, RequestToken}
 import play.api.libs.ws.ahc.StandaloneAhcWSClient
 import com.sksamuel.elastic4s.http.{ElasticClient, ElasticProperties}
 import com.typesafe.config.{Config, ConfigFactory}
+
 import ramomar.elasticsearch.{ElasticSearch, ElasticSearchService}
 import ramomar.elasticsearch.{Document => ElasticDocument}
 import ramomar.kafka.{TweetsConsumer, TweetsProducer, TweetsTopicConsumer, TweetsTopicProducer}
 import ramomar.twitter.{Tweet, Twitter}
 
-// Since I only want to familiarize myself with the APIs it's fine if we have consumer and producer on the same app.
+// Since my objective with this app is to become familiar with the API's,
+// I decided to not use any of the Alpakka plugins and place the producer and the consumer on the same app.
 
 object Main extends App {
 
