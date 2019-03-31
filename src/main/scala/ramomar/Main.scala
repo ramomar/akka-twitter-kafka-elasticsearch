@@ -71,7 +71,6 @@ object Main extends App {
     props.put(ProducerConfig.LINGER_MS_CONFIG, config.getInt("producers.twitter.linger-ms"))
     props.put(ProducerConfig.BATCH_SIZE_CONFIG, config.getInt("producers.twitter.batch-size"))
 
-
     props
   }
 
