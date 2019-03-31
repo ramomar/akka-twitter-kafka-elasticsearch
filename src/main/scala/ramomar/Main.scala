@@ -18,10 +18,10 @@ import play.api.libs.ws.ahc.StandaloneAhcWSClient
 import com.sksamuel.elastic4s.http.{ElasticClient, ElasticProperties}
 import com.typesafe.config.{Config, ConfigFactory}
 
-import ramomar.elasticsearch.{ElasticSearch, ElasticSearchService}
+import ramomar.elasticsearch.{ElasticsearchClient, ElasticsearchService}
 import ramomar.elasticsearch.{Document => ElasticDocument}
 import ramomar.kafka.{TweetsConsumer, TweetsProducer, TweetsTopicConsumer, TweetsTopicProducer}
-import ramomar.twitter.{Tweet, Twitter}
+import ramomar.twitter.{Tweet, TwitterClient}
 
 // Since my objective with this app is to become familiar with the API's,
 // I decided to not use any of the Alpakka plugins and place the producer and the consumer on the same app.
@@ -51,7 +51,7 @@ object Main extends App {
     secret = config.getString("twitter.access-tokens.secret")
   )
 
-  val twitterClient = new Twitter(consumerKey, token, wsClient)
+  val twitterClient = new TwitterClient(consumerKey, token, wsClient)
 
   val elasticSearchClient: ElasticClient = ElasticClient(
     ElasticProperties(config.getString("elasticsearch.host"))
@@ -96,7 +96,7 @@ object Main extends App {
 
   val tweetsConsumer: TweetsTopicConsumer = new TweetsConsumer(kafkaConsumer, config)
 
-  val elasticSearch: ElasticSearchService = new ElasticSearch(elasticSearchClient)
+  val elasticSearch: ElasticsearchService = new ElasticsearchClient(elasticSearchClient)
 
   // Connect to Twitter streaming API and create a Source.
   val tweetsSource: Source[String, Future[NotUsed]] = Source.fromFutureSource[String, NotUsed] {

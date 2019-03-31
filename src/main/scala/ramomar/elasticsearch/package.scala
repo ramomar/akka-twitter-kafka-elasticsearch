@@ -9,7 +9,7 @@ import scala.concurrent.Future
 package object elasticsearch {
   case class Document(index: String, `type`: String, fields: Seq[(String, Any)])
 
-  trait ElasticSearchService {
+  trait ElasticsearchService {
     def indexDocument(document: Document): Future[Response[IndexResponse]]
     def indexDocuments(documents: Seq[Document]): Future[Response[BulkResponse]]
   }

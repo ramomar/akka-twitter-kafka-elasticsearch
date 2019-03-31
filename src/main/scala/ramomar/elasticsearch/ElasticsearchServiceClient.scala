@@ -8,9 +8,9 @@ import com.sksamuel.elastic4s.http.bulk.BulkResponse
 import com.sksamuel.elastic4s.http.index.IndexResponse
 import com.sksamuel.elastic4s.indexes.IndexRequest
 
-class ElasticSearch(client: ElasticClient)
+class ElasticsearchClient(client: ElasticClient)
                    (implicit protected val ec: ExecutionContext)
-  extends ElasticSearchService {
+  extends ElasticsearchService {
 
   import com.sksamuel.elastic4s.http.ElasticDsl._
 
@@ -19,7 +19,7 @@ class ElasticSearch(client: ElasticClient)
     indexIntoQuery(document)
   }
 
-  def indexDocuments(documents: Seq[Document]) : Future[Response[BulkResponse]] =
+  def indexDocuments(documents: Seq[Document]): Future[Response[BulkResponse]] =
     client.execute {
       bulk(documents.map(indexIntoQuery))
     }

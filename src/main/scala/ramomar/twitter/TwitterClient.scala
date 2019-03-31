@@ -7,7 +7,7 @@ import play.api.libs.ws._
 
 import scala.concurrent.{ExecutionContext, Future}
 
-class Twitter(protected val consumerKey: ConsumerKey,
+class TwitterClient(protected val consumerKey: ConsumerKey,
               protected val token: RequestToken,
               protected val ws: StandaloneWSClient)
              (protected implicit val ec: ExecutionContext)
