@@ -18,3 +18,6 @@ Run `sbt compile`
 
 ## Running
 Run `sbt run`
+
+## TODO
+- Error handling.
