@@ -14,10 +14,10 @@ This is an example app that integrates Twitter, Kafka, and Elasticsearch using A
 You can setup your own Twitter credentials in the `application.conf` located in the `resources` folder.
 
 ## Building
-Run `sbt compile`
+Run `sbt compile`.
 
 ## Running
-Run `sbt run`
+Run `sbt run`.
 
 ## TODO
 - Error handling.
