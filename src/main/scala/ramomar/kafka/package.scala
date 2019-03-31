@@ -1,5 +1,9 @@
 package ramomar
 
+import scala.concurrent.Future
+
+import org.apache.kafka.clients.producer.RecordMetadata
+
 import ramomar.twitter.Tweet
 
 package object kafka {
@@ -10,6 +14,6 @@ package object kafka {
   }
 
   trait TweetsTopicProducer {
-    def sendTweet(tweet: Tweet)
+    def sendTweet(tweet: Tweet): Future[RecordMetadata]
   }
 }

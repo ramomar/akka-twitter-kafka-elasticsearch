@@ -1,6 +1,6 @@
 package ramomar.kafka
 
-import scala.concurrent.Promise
+import scala.concurrent.{Future, Promise}
 
 import com.typesafe.config.Config
 import org.apache.kafka.clients.producer.{Callback, KafkaProducer, ProducerRecord, RecordMetadata}
@@ -11,7 +11,7 @@ class TweetsProducer(producer: KafkaProducer[String, String],
                      config: Config) extends TweetsTopicProducer {
   private val topic = config.getString("producers.twitter.topic")
 
-  def sendTweet(tweet: Tweet): Unit = {
+  def sendTweet(tweet: Tweet): Future[RecordMetadata] = {
     val record = new ProducerRecord[String, String](topic, tweet.content)
 
     val p: Promise[RecordMetadata] = Promise()
