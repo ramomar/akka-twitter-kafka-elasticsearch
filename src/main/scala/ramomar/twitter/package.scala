@@ -1,11 +1,11 @@
 package ramomar
 
+import scala.concurrent.{ExecutionContext, Future}
+
 import akka.stream.scaladsl.Source
 import akka.util.ByteString
 import play.api.libs.oauth.{ConsumerKey, RequestToken}
 import play.api.libs.ws.StandaloneWSClient
-
-import scala.concurrent.{ExecutionContext, Future}
 
 package object twitter {
   case class Tweet(content: String)

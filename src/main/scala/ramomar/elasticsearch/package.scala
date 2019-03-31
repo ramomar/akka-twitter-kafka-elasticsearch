@@ -1,10 +1,10 @@
 package ramomar
 
+import scala.concurrent.Future
+
 import com.sksamuel.elastic4s.http.Response
 import com.sksamuel.elastic4s.http.bulk.BulkResponse
 import com.sksamuel.elastic4s.http.index.IndexResponse
-
-import scala.concurrent.Future
 
 package object elasticsearch {
   case class Document(index: String, `type`: String, fields: Seq[(String, Any)])

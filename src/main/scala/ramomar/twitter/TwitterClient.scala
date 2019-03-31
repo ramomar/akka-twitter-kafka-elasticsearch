@@ -1,11 +1,11 @@
 package ramomar.twitter
 
+import scala.concurrent.{ExecutionContext, Future}
+
 import akka.stream.scaladsl.Source
 import akka.util.ByteString
 import play.api.libs.oauth.{ConsumerKey, OAuthCalculator, RequestToken}
 import play.api.libs.ws._
-
-import scala.concurrent.{ExecutionContext, Future}
 
 class TwitterClient(protected val consumerKey: ConsumerKey,
               protected val token: RequestToken,
