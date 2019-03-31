@@ -126,11 +126,9 @@ object Main extends App {
     .runWith {
       Sink.foreach[Seq[Tweet]] { tweets =>
         val documents = tweets.map(t => ElasticDocument("tweets", "tweet", Seq("raw_json" -> t.content)))
-        if (documents.nonEmpty) {
-          elasticSearch.indexDocuments(documents).onComplete {
-            case Failure(e) => println(e)
-            case _ => ()
-          }
+        elasticSearch.indexDocuments(documents).onComplete {
+          case Failure(e) => println(e)
+          case _ => ()
         }
       }
     }
