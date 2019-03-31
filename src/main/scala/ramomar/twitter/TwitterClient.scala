@@ -1,6 +1,7 @@
 package ramomar.twitter
 
 import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.duration.Duration
 
 import akka.stream.scaladsl.Source
 import akka.util.ByteString
@@ -17,6 +18,7 @@ class TwitterClient(protected val consumerKey: ConsumerKey,
     ws.url("https://stream.twitter.com/1.1/statuses/filter.json")
       .withQueryStringParameters("track" -> keywords.mkString(","))
       .sign(OAuthCalculator(consumerKey, token))
+      .withRequestTimeout(Duration.Inf)
       .stream()
       .map { response =>
         val source: Source[ByteString, _] = response.bodyAsSource
